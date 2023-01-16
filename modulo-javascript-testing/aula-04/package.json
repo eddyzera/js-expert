@@ -1,0 +1,19 @@
+{
+  "name": "aula-04",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "supertest": "^6.3.3"
+  },
+  "scripts": {
+    "test": "npx mocha -w --parallel *.test.js",
+    "test:coverage": "npx nyc npx mocha --parallel *.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
