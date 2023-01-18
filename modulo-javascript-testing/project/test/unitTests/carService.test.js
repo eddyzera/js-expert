@@ -83,6 +83,11 @@ describe('CarService Suite Tests', () => {
 
     const numberOfDays = 5
 
+    sandbox.stub(
+      carService,
+      "taxesBasedOnAge",
+    ).get(() => [{ from: 40, to: 50, then: 1.3 }])
+
     const expected = carService.currencyFormat.format(244.40)
     const result = carService.calculateFinalPrice(
       customer,
