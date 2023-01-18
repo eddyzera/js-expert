@@ -50,6 +50,7 @@ describe('CarService Suite Tests', () => {
     expect(carService.getRandomPositionFromArray.calledOnce).to.be.ok
     expect(result).to.be.equal(expected)
   })
+
   it('given a carCategory it should return an available car', async () => {
     const car = mocks.validCar
     const carCategory = Object.create(mocks.validCarCategory)
@@ -70,6 +71,25 @@ describe('CarService Suite Tests', () => {
     
     expect(carService.chooseRandomCar.calledOnce).to.be.ok
     expect(carService.carRepository.find.calledWithExactly(car.id)).to.be.ok
+    expect(result).to.be.deep.equal(expected)
+  })
+
+  it('given a carCategory, customer and numberOfDays it should calculate final amount in real', async () => {
+    const customer = Object.create(mocks.validCustomer)
+    customer.age = 50
+
+    const carCategory = Object.create(mocks.validCarCategory)
+    carCategory.price = 37.6
+
+    const numberOfDays = 5
+
+    const expected = carService.currencyFormat.format(244.40)
+    const result = carService.calculateFinalPrice(
+      customer,
+      carCategory,
+      numberOfDays
+    )
+
     expect(result).to.be.deep.equal(expected)
   })
 })
